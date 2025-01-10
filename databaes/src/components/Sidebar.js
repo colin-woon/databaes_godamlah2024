@@ -1,5 +1,9 @@
+import Dashboard from './Dashboard';
+
 export default function Sidebar({ children }) {
 	return (
+		<div className="flex w-full">
+		<nav className="w-64 bg-gray-800 min-h-screen p-4">
 		<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-neutral-950 flex flex-col">
       <div class="flex items-center ps-2.5 mb-5">
@@ -44,5 +48,10 @@ export default function Sidebar({ children }) {
       </ul>
    </div>
 </aside>
+</nav>
+   <main className="flex-1 bg-neutral-900">
+        <Dashboard />
+   </main>
+</div>
 	);
   }

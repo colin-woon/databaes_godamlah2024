@@ -23,7 +23,7 @@ export default function Home() {
         <Sidebar />
       ) : (
         <div className="flex items-center justify-center w-full min-h-screen">
-          <div className="w-full max-w-md p-8 rounded-lg shadow-lg bg-white">
+          <div className="w-full max-w-md p-8 rounded-lg shadow-lg">
             <SignIn onSignIn={setIsAuthenticated} />
           </div>
         </div>
