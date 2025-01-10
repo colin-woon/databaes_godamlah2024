@@ -5,7 +5,7 @@ export default function Sidebar({ children }) {
       <div class="flex items-center ps-2.5 mb-5">
          <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">Databaes</span>
 		 <div class="px-1"></div>
-         <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
+         <img src="/logo/databaes_transparent.png" class="h-8 me-3 sm:h-10" alt="Databaes Logo" />
       </div>
       <ul class="space-y-2 font-medium flex flex-col justify-center flex-grow">
          <li>
