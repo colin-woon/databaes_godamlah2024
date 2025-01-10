@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import UploadButton from './UploadButton';
+import GrantButton from './GrantButton';
+import RevokeButton from './RevokeButton';
 
 export default function Dashboard() {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [downloadingId, setDownloadingId] = useState(null);
-  const { token } = useAuth();
+  const { token, ownerId } = useAuth();
 
   const handleDownload = async (fileId, fileName) => {
     setDownloadingId(fileId);
@@ -102,10 +104,12 @@ export default function Dashboard() {
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase">Version</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase">Last Updated</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase">Owner ID</th>
-            </tr>
+			  <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase">Actions</th>
+			</tr>
           </thead>
           <tbody className="divide-y divide-neutral-700">
             {files.map((file) => (
+
               <tr key={file.ID}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button
@@ -119,6 +123,12 @@ export default function Dashboard() {
                 <td className="px-6 py-4 whitespace-nowrap">{file.Version}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{new Date(file.LastUpdated).toLocaleString()}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{file.OwnerID}</td>
+				<td className="px-6 py-4 whitespace-nowrap">
+                  <div className="flex gap-2">
+				  <GrantButton fileId={file.ID}/>
+				  {file.OwnerID === ownerId && <RevokeButton fileId={file.ID}/>}
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

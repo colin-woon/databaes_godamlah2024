@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 export default function SignIn({ onSignIn }) {
-  const { setToken } = useAuth();
+  const { setToken, setOwnerId } = useAuth();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -31,6 +31,7 @@ export default function SignIn({ onSignIn }) {
 	  console.log(data);
       if (data.status === 'SUCCESS') {
         setToken(data.data.token);
+		setOwnerId(data.data.id);
         onSignIn(true);
       } else {
         setError(data.message || 'Sign in failed');
